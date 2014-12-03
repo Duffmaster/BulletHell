@@ -1,7 +1,6 @@
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 
-
 public class ShipBullet extends Actor{
 	Bullet b ;
 	public ShipBullet(){
@@ -21,20 +20,21 @@ public class ShipBullet extends Actor{
 		int thisX=getX();
 		int thisY=getY();
 
-
 		if(thisX<=0||thisY<=0||thisX>=worldX||thisY>=worldY){
 			this.getWorld().removeObject(this);
 		}
-
 	}
 	
 	public void hitsBullet(){
-		if(this.getY()>20){
-		Bullet b = (Bullet) this.getOneIntersectingObject(Bullet.class);
-		}
-		if(b != null ){
-			this.getWorld().removeObject(b);
-			this.getWorld().removeObject(this);
+		if(this.getWorld()!=null){
+			if(this.getY()>20){
+				Bullet b = (Bullet) this.getOneIntersectingObject(Bullet.class);
+
+				if(b != null ){
+					this.getWorld().removeObject(b);
+					this.getWorld().removeObject(this);
+				}
+			}
 		}
 	}
 }
