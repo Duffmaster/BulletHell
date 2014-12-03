@@ -27,9 +27,11 @@ public class Ship extends Actor{
 
 		if(bullet != null){
 			Life.lives -= 1;  
-			this.setLocation(500, 700);
+			int x = this.getX();
+			int y = this.getY();
+			this.setLocation(x, y);
 			this.getWorld().removeObject(bullet);
-			countdown = 30;
+			countdown = 60;
 			this.isNotInvincible();
 		}
 	}
