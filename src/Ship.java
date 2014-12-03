@@ -22,7 +22,7 @@ public class Ship extends Actor{
 	}
 
 
-	public void isCrashed(){
+	private void isCrashed(){
 		Bullet bullet = (Bullet) this.getOneIntersectingObject(Bullet.class);
 
 		if(bullet != null){
@@ -36,7 +36,7 @@ public class Ship extends Actor{
 		}
 	}
 
-	public boolean isNotInvincible(){
+	private boolean isNotInvincible(){
 		if(countdown >0){
 			int n = countdown % 2;
 			if(n == 0){
@@ -51,7 +51,7 @@ public class Ship extends Actor{
 		return(countdown == 0);
 	}
 
-	public void movement(){
+	private void movement(){
 		if(Greenfoot.isKeyDown("up")){
 			this.move(3);
 		}
@@ -67,7 +67,7 @@ public class Ship extends Actor{
 		}
 	}
 
-	public void shoot(){
+	private void shoot(){
 		if(Greenfoot.isKeyDown("space")){
 			if (n == 100){
 				n -= 1;
