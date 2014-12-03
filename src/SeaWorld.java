@@ -29,12 +29,14 @@ public class SeaWorld extends World {
 
 		Ship ship = new Ship();
 		Life life = new Life();
+		Score score = new Score();
 		getBackground().drawImage(BG, 0, 0);
 
 		this.addObject(ship, 450, 700);
 		this.addObject(ghostBullet, 1, 1);
 		this.addObject(ghostBullet2, 1, 1);
 		this.addObject(life,500,730);
+		this.addObject(score,100,730);
 
 		makeLevel(level);
 	}
