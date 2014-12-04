@@ -1,5 +1,6 @@
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 
 
 public class Ship extends Actor{
@@ -8,9 +9,11 @@ public class Ship extends Actor{
 
 	private int gunCooldown;
 	private int countdown = 0;
-
+	private GreenfootImage ship = new GreenfootImage("Images/SpaceShip.png");
 	public Ship(){
-		this.setImage("Images/SpaceShip.png");
+		
+		ship.scale(40, 25);
+		this.setImage(ship);
 		this.setRotation(270);
 		gunCooldown=1;
 	}
@@ -46,7 +49,7 @@ public class Ship extends Actor{
 				this.setImage("Images/Clear.png");
 			}
 			else{
-				this.setImage("Images/SpaceShip.png");
+				this.setImage(ship);
 			}
 
 			countdown --;
@@ -82,3 +85,4 @@ public class Ship extends Actor{
 		}
 	}
 }
+
