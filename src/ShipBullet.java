@@ -34,7 +34,7 @@ public class ShipBullet extends Actor{
 				b = (Bullet) this.getOneIntersectingObject(Bullet.class);
 
 				if(b != null ){
-					Score.addScore();
+					Score.addScore(SeaWorld.getLevel());
 					this.getWorld().removeObject(b);
 					this.getWorld().removeObject(this);
 				}
