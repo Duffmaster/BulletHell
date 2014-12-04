@@ -60,6 +60,10 @@ public class SeaWorld extends World {
 			}
 		}
 	}
+	
+	public static int getLevel() {
+		return level;
+	}
 
 	private void makeLevel(int level){
 		switch(level){
