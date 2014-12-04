@@ -42,7 +42,7 @@ public class SeaWorld extends World {
 		this.addObject(ghostBullet2, 1, 1);
 
 		this.addObject(life,50,700);
-		this.addObject(score,50,730);
+		this.addObject(score,70,730);
 
 		makeLevel(level);
 	}
