@@ -3,13 +3,17 @@ import greenfoot.Greenfoot;
 
 
 public class Ship extends Actor{
+
+	final static int MOVE_SPEED=4;
+
+	private int gunCooldown;
 	private int countdown = 0;
-	private int n = 0;
+
 	public Ship(){
 		this.setImage("Images/SpaceShip.png");
 		this.setRotation(270);
+		gunCooldown=1;
 	}
-
 
 	public void act(){
 		if(Life.lives > 0){
@@ -20,7 +24,6 @@ public class Ship extends Actor{
 			}
 		}
 	}
-
 
 	private void isCrashed(){
 		Bullet bullet = (Bullet) this.getOneIntersectingObject(Bullet.class);
@@ -53,30 +56,29 @@ public class Ship extends Actor{
 
 	private void movement(){
 		if(Greenfoot.isKeyDown("up")){
-			this.move(3);
+			this.move(MOVE_SPEED);
 		}
 		if(Greenfoot.isKeyDown("left")){
-			this.setLocation(this.getX()-3, this.getY());
+			this.setLocation(this.getX()-MOVE_SPEED, this.getY());
 		}
 		if(Greenfoot.isKeyDown("right")){
-			this.setLocation(this.getX()+3, this.getY());
+			this.setLocation(this.getX()+MOVE_SPEED, this.getY());
 
 		}
 		if(Greenfoot.isKeyDown("down")){
-			this.move(-3);
+			this.move(-MOVE_SPEED);
 		}
 	}
 
 	private void shoot(){
-		if(Greenfoot.isKeyDown("space")){
-			if (n == 100){
-				n -= 1;
-				ShipBullet b = new ShipBullet();
-				this.getWorld().addObject(b, this.getX(), this.getY());
-			}
-			n-=1;
+		if(Greenfoot.isKeyDown("space")&&gunCooldown==0){
+			ShipBullet b = new ShipBullet();
+			this.getWorld().addObject(b, this.getX(), this.getY());
+			gunCooldown=20;
 		}
 		else{
-			n = 100;
+			if(gunCooldown!=0)
+				gunCooldown--;
 		}
-	
+	}
+}

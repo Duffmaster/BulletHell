@@ -1,16 +1,19 @@
 import greenfoot.Actor;
-import greenfoot.GreenfootImage;
 
 public class ShipBullet extends Actor{
-	Bullet b ;
+	
+	final static int MOVE_SPEED=6;
+
+	private Bullet b;
+
 	public ShipBullet(){
-		this.setImage("Images/SpaceShip.png");
+		this.setImage("Images/SpaceRocket.png");
 		this.setRotation(270);
 	}
 
 	public void act(){
 		this.isAtEdge();
-		this.move(5);
+		this.move(MOVE_SPEED);
 		this.hitsBullet();
 	}
 
@@ -24,11 +27,11 @@ public class ShipBullet extends Actor{
 			this.getWorld().removeObject(this);
 		}
 	}
-	
+
 	public void hitsBullet(){
 		if(this.getWorld()!=null){
 			if(this.getY()>20){
-				Bullet b = (Bullet) this.getOneIntersectingObject(Bullet.class);
+				b = (Bullet) this.getOneIntersectingObject(Bullet.class);
 
 				if(b != null ){
 					Score.addScore();

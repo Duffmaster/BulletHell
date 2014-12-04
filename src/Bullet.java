@@ -110,6 +110,10 @@ public class Bullet extends Actor {
 		
 		return isTouching;
 	}
+	
+	public void addAngle(int angle){
+		this.angle+=angle;
+	}
 
 	public GreenfootImage getImage() {
 		return image;

@@ -26,29 +26,35 @@ public class SeaWorld extends World {
 	public SeaWorld(int level, GameWorld world){
 		super(WIDTH,HEIGHT,CELLSIZE);
 		this.world=world;
+		this.setPaintOrder(Life.class,Score.class,Spawner.class,Ship.class,Bullet.class,ShipBullet.class);
 
-		Ship ship = new Ship();
 		Life life = new Life();
 		Score score = new Score();
 		getBackground().drawImage(BG, 0, 0);
 
-		this.addObject(ship, 450, 700);
+		if(Life.lives!=0){
+			Ship ship = new Ship();
+			this.addObject(ship, 450, 700);
+		}
 		this.addObject(ghostBullet, 1, 1);
 		this.addObject(ghostBullet2, 1, 1);
-		this.addObject(life,500,730);
-		this.addObject(score,100,730);
+
+		this.addObject(life,50,700);
+		this.addObject(score,50,730);
 
 		makeLevel(level);
 	}
 
 	public void act(){
 		if(isMenu){
-			if("space".equals(Greenfoot.getKey())){
+			if("enter".equals(Greenfoot.getKey())){
 				Greenfoot.setWorld(world);
 			}
 		}else{
-			if(getObjects(Bullet.class).size()==1){
+			if(Life.lives==0){
 				Greenfoot.setWorld(new SeaWorld(0, world));
+			}else if(getObjects(Bullet.class).size()==1){
+				Greenfoot.setWorld(new SeaWorld(-1, world));
 			}
 		}
 	}
@@ -59,8 +65,12 @@ public class SeaWorld extends World {
 			getBackground().drawString("Level Complete!", WIDTH/2, HEIGHT/2);
 			isMenu=true;
 			break;
+		case 0:
+			getBackground().drawString("You died...\nPress enter to return to the main menu.", WIDTH/2, HEIGHT/2);
+			isMenu=true;
+			break;
 		case 1:
-			Spawner testSpawn=new Spawner(0,270,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner testSpawn=new Spawner(0,270,1,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
 			addObject(testSpawn, 450, 100);
 			isMenu=false;
 			break;

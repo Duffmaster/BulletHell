@@ -3,6 +3,7 @@ import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 
 public class Life extends Actor {
+	
 	static int lives = 3;
 	
 	public void act(){

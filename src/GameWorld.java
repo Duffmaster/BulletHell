@@ -8,8 +8,6 @@ public class GameWorld extends World {
 	final static int HEIGHT = 750;
 	final static int CELLSIZE = 1;
 
-	//Yo
-
 	private int currentLevel;
 
 	public GameWorld(){
@@ -24,6 +22,9 @@ public class GameWorld extends World {
 	}
 
 	public void act(){
+		if(Life.lives==0){
+			Life.lives=3;
+		}
 		if("space".equals(Greenfoot.getKey())){
 			Greenfoot.setWorld(new SeaWorld(currentLevel, this));
 		}
