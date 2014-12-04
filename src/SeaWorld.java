@@ -18,6 +18,8 @@ public class SeaWorld extends World {
 
 	private Bullet ghostBullet=new Bullet(1,180,new GreenfootImage(1,1));
 	private Bullet ghostBullet2=new Bullet(1,180,new GreenfootImage(1,1));
+	
+	private static int level;
 
 	private GameWorld world;
 
@@ -63,6 +65,7 @@ public class SeaWorld extends World {
 		switch(level){
 		default:
 			getBackground().drawString("Level Complete!", WIDTH/2, HEIGHT/2);
+			getBackground().drawImage(new GreenfootImage("Level Score : " + Score.getScores(SeaWorld.level), 24, Color.WHITE,new Color(0,0,0,0)), WIDTH/2, HEIGHT/2);
 			isMenu=true;
 			break;
 		case 0:
@@ -70,20 +73,25 @@ public class SeaWorld extends World {
 			isMenu=true;
 			break;
 		case 1:
+			SeaWorld.level = level;
 			Spawner testSpawn=new Spawner(0,270,1,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
 			addObject(testSpawn, 450, 100);
 			isMenu=false;
 			break;
 		case 2:
+			SeaWorld.level = level;
 			isMenu=false;
 			break;
 		case 3: 
+			SeaWorld.level = level;
 			isMenu=false;
 			break;
 		case 4:
+			SeaWorld.level = level;
 			isMenu=false;
 			break;
 		case 5:
+			SeaWorld.level = level;
 			isMenu=false;
 			break;
 		}
