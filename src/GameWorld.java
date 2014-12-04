@@ -7,6 +7,8 @@ public class GameWorld extends World {
 	final static int WIDTH = 900;
 	final static int HEIGHT = 750;
 	final static int CELLSIZE = 1;
+	
+	private Button level1 = new Button();
 
 	private int currentLevel;
 
@@ -16,7 +18,10 @@ public class GameWorld extends World {
 		getBackground().setColor(Color.BLACK);
 		getBackground().fill();
 		getBackground().setColor(Color.LIGHT_GRAY);
-		getBackground().drawString("Press space to play", 300, 250);
+		this.addObject(level1, 500-35, 300);
+		GreenfootImage title = new GreenfootImage("Images/SpaceInvaders.jpg");
+		getBackground().drawImage(title, WIDTH/2-title.getWidth()/2, 100);
+	//	getBackground().drawString("Press space to play", 300, 250);
 
 		currentLevel=1;
 	}
@@ -25,8 +30,12 @@ public class GameWorld extends World {
 		if(Life.lives==0){
 			Life.lives=3;
 		}
-		if("space".equals(Greenfoot.getKey())){
-			Greenfoot.setWorld(new SeaWorld(currentLevel, this));
+		MouseInfo info = Greenfoot.getMouseInfo();
+		if(info != null){
+				if(Greenfoot.mouseClicked(level1)){
+					Greenfoot.setWorld(new SeaWorld(currentLevel, this));
+				}
+			
 		}
 	}
 }
