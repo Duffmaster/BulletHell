@@ -5,23 +5,29 @@ import greenfoot.GreenfootImage;
 
 
 public class Score extends Actor {
-
-	private static int score = 0;
+	
+	
+	private static int[] scores = new int[6];
 
 
 	public void act(){
-
-		this.setImage(new GreenfootImage("Score : " + score, 24, Color.WHITE,new Color(0,0,0,0)));
-
-
+		this.setImage(new GreenfootImage("Total Score : " + totalScore(), 24, Color.WHITE,new Color(0,0,0,0)));
 	}
-	public static void addScore(){
-		score++;
+	
+	private int totalScore(){
+		int totalScore = 0;
+		for(int i: scores){
+			totalScore += i;
+		}
+		return totalScore;
+		
+	}
+	public static void addScore(int i){
+		scores[i]++;
 	}
 
-
-
-
-
-
+	public static int getScores(int level) {
+		return scores[level];
+	}
 }
+
