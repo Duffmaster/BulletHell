@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -18,14 +20,19 @@ public class SeaWorld extends World {
 
 	private Bullet ghostBullet=new Bullet(1,180,new GreenfootImage(1,1));
 	private Bullet ghostBullet2=new Bullet(1,180,new GreenfootImage(1,1));
-	
+
+
 	private static int level;
+	private int nol = 2;
 
 	private GameWorld world;
 
 	private boolean isMenu;
 
-	public SeaWorld(int level, GameWorld world){
+	private boolean allLevels;
+
+	public SeaWorld(int level, GameWorld world, boolean levels){
+
 		super(WIDTH,HEIGHT,CELLSIZE);
 		this.world=world;
 		this.setPaintOrder(Life.class,Score.class,Spawner.class,Ship.class,Bullet.class,ShipBullet.class);
@@ -45,22 +52,30 @@ public class SeaWorld extends World {
 		this.addObject(score,70,730);
 
 		makeLevel(level);
+
+		this.allLevels = levels;
 	}
 
 	public void act(){
 		if(isMenu){
-			if("enter".equals(Greenfoot.getKey())){
-				Greenfoot.setWorld(world);
+			if("enter".equals(Greenfoot.getKey()) ){
+				if(!allLevels || level+1 <= nol){
+					Greenfoot.setWorld(world);
+				}
+				else{
+					Greenfoot.setWorld(new SeaWorld(level+1,world,allLevels));
+				}
 			}
-		}else{
+		}
+		else{
 			if(Life.lives==0){
-				Greenfoot.setWorld(new SeaWorld(0, world));
-			}else if(getObjects(Bullet.class).size()==1){
-				Greenfoot.setWorld(new SeaWorld(-1, world));
+				Greenfoot.setWorld(new SeaWorld(0, world,allLevels ));
+			}else if(getObjects(Bullet.class).size()<=1){
+				Greenfoot.setWorld(new SeaWorld(-1, world, allLevels));
 			}
 		}
 	}
-	
+
 	public static int getLevel() {
 		return level;
 	}
@@ -84,6 +99,15 @@ public class SeaWorld extends World {
 			break;
 		case 2:
 			SeaWorld.level = level;
+			Spawner Spawn1=new Spawner(1,0,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn2=new Spawner(1,90,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn3=new Spawner(1,270,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn4=new Spawner(1,180,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+
+			addObject(Spawn1, 40, 100);
+			addObject(Spawn2, 860, 100);
+			addObject(Spawn3, 40, 650);
+			addObject(Spawn4, 860, 650);
 			isMenu=false;
 			break;
 		case 3: 
