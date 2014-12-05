@@ -1,6 +1,4 @@
 import greenfoot.Actor;
-import greenfoot.GreenfootImage;
-
 
 public class Button extends Actor{
 
