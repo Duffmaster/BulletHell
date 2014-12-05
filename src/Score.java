@@ -25,6 +25,12 @@ public class Score extends Actor {
 	public static void addScore(int i){
 		scores[i]++;
 	}
+	
+	public static void resetScore(){
+		for(int i = 0; i < scores.length; i++){
+			scores[i]=0;
+		}
+	}
 
 	public static int getScores(int level) {
 		return scores[level];
