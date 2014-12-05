@@ -1,12 +1,9 @@
 import java.util.Random;
-
 import greenfoot.Actor;
-
 
 public class Star extends Actor{
 
 	Random ran = new Random();
-	private int x = ran.nextInt(GameWorld.WIDTH);
 	private int y = ran.nextInt(GameWorld.HEIGHT);
 	private int width = ran.nextInt(3)+1;
 
