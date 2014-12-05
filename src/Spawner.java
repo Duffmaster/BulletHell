@@ -90,21 +90,4 @@ public class Spawner extends Actor {
 			getWorld().removeObject(this);
 		}
 	}
-
-	//do not call if world==null
-	private boolean isAtEdge(){
-		boolean isEdge=false;
-		int worldX=getWorld().getWidth();
-		int worldY=getWorld().getHeight();
-		int thisX=getX();
-		int thisY=getY();
-		int thisWidth=image.getWidth()/2;
-		int thisHeight=image.getHeight()/2;
-
-		if(thisX<=0||thisY<=0||thisX+thisWidth>=worldX||thisY+thisHeight>=worldY){
-			isEdge=true;
-		}
-
-		return isEdge;
-	}
 }
