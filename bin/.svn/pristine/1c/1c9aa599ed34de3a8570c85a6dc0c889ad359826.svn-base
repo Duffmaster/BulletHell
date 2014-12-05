@@ -1,7 +1,7 @@
 #Properties for running Greenfoot scenarios alone.
 
-main.class=GameWorld
-project.name=TeamProject
+main.class=SeaWorld
+project.name=BulletHell
 
 controls.runonce.longDescription=Call 'act' once for every actor.
 controls.pause.button=Pause

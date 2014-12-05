@@ -23,7 +23,7 @@ public class SeaWorld extends World {
 
 
 	private static int level;
-	private int nol = 2;
+	private int nol = 3;
 
 	private GameWorld world;
 
@@ -59,7 +59,9 @@ public class SeaWorld extends World {
 	public void act(){
 		if(isMenu){
 			if("enter".equals(Greenfoot.getKey()) ){
-				if(!allLevels || level+1 <= nol){
+				if(!allLevels || level+1 == nol +1){
+					GameWorld.t =1;
+					Life.lives = 3;
 					Greenfoot.setWorld(world);
 				}
 				else{
@@ -93,16 +95,20 @@ public class SeaWorld extends World {
 			break;
 		case 1:
 			SeaWorld.level = level;
-			Spawner testSpawn=new Spawner(0,270,1,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
-			addObject(testSpawn, 450, 100);
+			Spawner testSpawn=new Spawner(1,0,1,60,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner testSpawn1=new Spawner(-1,0,1,60,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+
+			addObject(testSpawn, 0, 100);
+			addObject(testSpawn1, 900, 100);
+
 			isMenu=false;
 			break;
 		case 2:
 			SeaWorld.level = level;
-			Spawner Spawn1=new Spawner(1,0,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
-			Spawner Spawn2=new Spawner(1,90,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
-			Spawner Spawn3=new Spawner(1,270,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
-			Spawner Spawn4=new Spawner(1,180,25,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn1=new Spawner(1,0,90,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn2=new Spawner(1,90,90,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn3=new Spawner(1,270,90,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn4=new Spawner(1,180,90,20,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
 
 			addObject(Spawn1, 40, 100);
 			addObject(Spawn2, 860, 100);
@@ -112,6 +118,22 @@ public class SeaWorld extends World {
 			break;
 		case 3: 
 			SeaWorld.level = level;
+			Spawner Spawn0=new Spawner(-1,215,90,40,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn5=new Spawner(1,135,90,40,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn6=new Spawner(-1,135,90,40,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			Spawner Spawn7=new Spawner(1,215,90,40,testBullets,new GreenfootImage("images/SpawnerDefault.png"));
+			
+			addObject(Spawn0, 40, 100);
+			addObject(Spawn5, 860, 100);
+			addObject(Spawn6, 40, 650);
+			addObject(Spawn7, 860, 650);
+			
+			if(Spawn0.getX() >= WIDTH - 100){
+				Spawn0.setRotation(180);
+			}
+			if(Spawn6.getX() >= WIDTH - 100){
+				Spawn6.setRotation(45);
+			}
 			isMenu=false;
 			break;
 		case 4:

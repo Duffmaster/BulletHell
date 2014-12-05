@@ -1,0 +1,33 @@
+import java.awt.Color;
+import greenfoot.GreenfootImage;
+import greenfoot.World;
+
+public class SeaWorld extends World {
+	final static int WIDTH = 900;
+	final static int HEIGHT = 750;
+	final static int CELLSIZE = 1;
+	
+	final static Bullet testBullet=new Bullet(3,0,0,.3,new GreenfootImage("images/GreenBullet.png"));
+	final static Bullet testBullet2=new Bullet(3,0,180,.3,new GreenfootImage("images/GreenBullet.png"));
+	final static Bullet testBullet3=new Bullet(3,0,0,.3,new GreenfootImage("images/GreenBullet.png"));
+	final static Bullet testBullet4=new Bullet(3,0,180,.3,new GreenfootImage("images/GreenBullet.png"));
+	
+	public SeaWorld(){
+		super(WIDTH,HEIGHT,CELLSIZE);
+		
+		Ship ship = new Ship();
+		getBackground().setColor(Color.BLACK);
+		getBackground().fill();
+		
+		this.addObject(ship, 500, 700);
+		
+		Spawner testSpawn=new Spawner(1,270,100,testBullet);
+		addObject(testSpawn, 40, 700);
+		Spawner testSpawn2=new Spawner(1,90,100,testBullet2);
+		addObject(testSpawn2, 880, 40);
+//		Spawner testSpawn3=new Spawner(1,270,100,testBullet);
+//		addObject(testSpawn3, 450, 60);
+//		Spawner testSpawn4=new Spawner(0,0,100,testBullet2);
+//		addObject(testSpawn4, 40, 40);
+	}
+}

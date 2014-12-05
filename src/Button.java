@@ -1,10 +1,11 @@
 import greenfoot.Actor;
+import greenfoot.GreenfootImage;
 
 
 public class Button extends Actor{
 
-	public Button(){
-		this.setImage("Images/Button1.png");
-		this.getImage().scale(70, 30);
+	public Button(String string){
+		this.setImage(string);
+		this.getImage().scale(120, 60);
 	}
 }

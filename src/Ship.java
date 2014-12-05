@@ -1,6 +1,7 @@
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
+import greenfoot.GreenfootSound;
 
 
 public class Ship extends Actor{
@@ -77,6 +78,9 @@ public class Ship extends Actor{
 		if(Greenfoot.isKeyDown("space")&&gunCooldown==0){
 			ShipBullet b = new ShipBullet();
 			this.getWorld().addObject(b, this.getX(), this.getY());
+			GreenfootSound missle = new GreenfootSound("Sounds/Missle.wav");
+			missle.setVolume(50);
+			missle.play();
 			gunCooldown=20;
 		}
 		else{
