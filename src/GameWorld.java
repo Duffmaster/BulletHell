@@ -19,10 +19,13 @@ public class GameWorld extends World {
 
 
 
-	private Button allLevel = new Button("Images/LevelOne.png");
+
 	private Button level1 = new Button("Images/LevelOne.png");
 	private Button level2 = new Button("Images/LevelTwo.png");
 	private Button level3 = new Button("Images/LevelThree.png");
+	private Button level4 = new Button("Images/Level4.png");
+	private Button level5 = new Button("Images/Level5.png");
+	private Button allLevel = new Button("Images/AllLevels.png");
 	//Yo
 
 	private int currentLevel;
@@ -44,11 +47,13 @@ public class GameWorld extends World {
 
 		}
 
-		this.addObject(level1, 500-35, 300);
-		this.addObject(level2, 500-35, 400);
-		this.addObject(level3, 500-35, 500);
-		this.addObject(allLevel, 500-35, 600);
-		GreenfootImage title = new GreenfootImage("Images/SpaceInvaders.jpg");
+		this.addObject(level1, 500-35-70, 300);
+		this.addObject(level2, 500-35+70, 300);
+		this.addObject(level3, 500-35-70, 400);
+		this.addObject(level4, 500-35+70, 400);
+		this.addObject(level5, 500-35-70, 500);
+		this.addObject(allLevel, 500-35+70, 500);
+		GreenfootImage title = new GreenfootImage("Images/Title.png");
 		getBackground().drawImage(title, WIDTH/2-title.getWidth()/2, 100);
 		//		getBackground().drawString("Press space to play", 300, 250);
 
@@ -89,6 +94,15 @@ public class GameWorld extends World {
 			if(Greenfoot.mouseClicked(level3)){
 				sound.stop();
 				currentLevel = 3;
+				Greenfoot.setWorld(new SeaWorld(currentLevel, this, false));
+			}
+			if(Greenfoot.mouseClicked(level4)){
+				sound.stop();
+				currentLevel = 4;
+				Greenfoot.setWorld(new SeaWorld(currentLevel, this, false));
+			}if(Greenfoot.mouseClicked(level5)){
+				sound.stop();
+				currentLevel = 5;
 				Greenfoot.setWorld(new SeaWorld(currentLevel, this, false));
 			}
 		}
