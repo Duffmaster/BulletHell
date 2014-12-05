@@ -4,7 +4,7 @@ import greenfoot.World;
 
 public class Spawner extends Actor {
 
-	private final int baseDelay=750;
+	private final int baseDelay=500;
 
 	private final GreenfootImage image;
 	private final Bullet baseBullet[];
@@ -86,8 +86,25 @@ public class Spawner extends Actor {
 		move(velocity);
 		x=getX();
 		y=getY();
-		if(bulletsLeft==0){
+		if(bulletsLeft==0||isAtEdge()){
 			getWorld().removeObject(this);
 		}
+	}
+
+	//do not call if world==null
+	private boolean isAtEdge(){
+		boolean isEdge=false;
+		int worldX=getWorld().getWidth();
+		int worldY=getWorld().getHeight();
+		int thisX=getX();
+		int thisY=getY();
+		int thisWidth=image.getWidth()/2;
+		int thisHeight=image.getHeight()/2;
+
+		if(thisX<=0||thisY<=0||thisX+thisWidth>=worldX||thisY+thisHeight>=worldY){
+			isEdge=true;
+		}
+
+		return isEdge;
 	}
 }
