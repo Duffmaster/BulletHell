@@ -63,6 +63,8 @@ public class SeaWorld extends World {
 					GameWorld.t =1;
 					Life.lives = 3;
 					Greenfoot.setWorld(world);
+					Score.resetScore();
+
 				}
 				else{
 					Greenfoot.setWorld(new SeaWorld(level+1,world,allLevels));
@@ -85,12 +87,18 @@ public class SeaWorld extends World {
 	private void makeLevel(int level){
 		switch(level){
 		default:
-			getBackground().drawString("Level Complete!", WIDTH/2, HEIGHT/2);
-			getBackground().drawImage(new GreenfootImage("Level Score : " + Score.getScores(SeaWorld.level), 24, Color.WHITE,new Color(0,0,0,0)), WIDTH/2, HEIGHT/2);
+			GreenfootImage lvlCompleteBoss = new GreenfootImage("Boss Level Complete! \nTotal Score: " + Score.totalScore() + "\nPress enter to continue!", 50, Color.WHITE, new Color(0,0,0,0));
+			GreenfootImage lvlComplete = new GreenfootImage("Level "+SeaWorld.level+" Complete! \nScore: " + Score.getScores(SeaWorld.level) + "\nPress enter to continue!", 50, Color.WHITE, new Color(0,0,0,0));
+			if(level < 6){
+				getBackground().drawImage(lvlComplete, (WIDTH-lvlComplete.getWidth())/2, (HEIGHT-lvlComplete.getHeight())/2);
+			} else {
+				getBackground().drawImage(lvlCompleteBoss, (WIDTH-lvlCompleteBoss.getWidth())/2, (HEIGHT-lvlCompleteBoss.getHeight())/2);
+			}
 			isMenu=true;
 			break;
 		case 0:
-			getBackground().drawString("You died...\nPress enter to return to the main menu.", WIDTH/2, HEIGHT/2);
+			GreenfootImage die = new GreenfootImage("You died...\nPress enter to return to the main menu.", 50, Color.WHITE, new Color(0,0,0,0));
+			getBackground().drawImage(die, (WIDTH-die.getWidth())/2, (HEIGHT-die.getHeight())/2);
 			isMenu=true;
 			break;
 		case 1:
