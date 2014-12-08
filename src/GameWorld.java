@@ -12,10 +12,10 @@ public class GameWorld extends World {
 	final static int WIDTH = 900;
 	final static int HEIGHT = 750;
 	final static int CELLSIZE = 1;
-	
+
 	Random ran = new Random();
-	
-	
+
+
 
 
 
@@ -26,6 +26,7 @@ public class GameWorld extends World {
 	private Button level4 = new Button("Images/Level4.png");
 	private Button level5 = new Button("Images/Level5.png");
 	private Button allLevel = new Button("Images/AllLevels.png");
+	private Button boss = new Button("Images/Clear.png");
 	//Yo
 
 	private int currentLevel;
@@ -39,7 +40,7 @@ public class GameWorld extends World {
 		getBackground().fill();
 		getBackground().setColor(Color.LIGHT_GRAY);
 
-		for(int i = 0; i< 500; i++){
+		for(int i = 0; i< SeaWorld.STARNUMBER; i++){
 			Star star = new Star();
 			int x = ran.nextInt(WIDTH);
 			int y = ran.nextInt(HEIGHT);
@@ -53,6 +54,7 @@ public class GameWorld extends World {
 		this.addObject(level4, 500-35+70, 400);
 		this.addObject(level5, 500-35-70, 500);
 		this.addObject(allLevel, 500-35+70, 500);
+		this.addObject(boss, 0, 0);
 		GreenfootImage title = new GreenfootImage("Images/Title.png");
 		getBackground().drawImage(title, WIDTH/2-title.getWidth()/2, 100);
 		//		getBackground().drawString("Press space to play", 300, 250);
@@ -69,7 +71,7 @@ public class GameWorld extends World {
 		MouseInfo info = Greenfoot.getMouseInfo();
 		if(info != null){
 			if(t==1){
-				
+
 				sound.playLoop();
 				t--;
 			}
@@ -103,6 +105,11 @@ public class GameWorld extends World {
 			}if(Greenfoot.mouseClicked(level5)){
 				sound.stop();
 				currentLevel = 5;
+				Greenfoot.setWorld(new SeaWorld(currentLevel, this, false));
+			}
+			if(Greenfoot.mouseClicked(boss)){
+				sound.stop();
+				currentLevel = 6;
 				Greenfoot.setWorld(new SeaWorld(currentLevel, this, false));
 			}
 		}
