@@ -23,7 +23,7 @@ public class ShipBullet extends Actor{
 		int thisX=getX();
 		int thisY=getY();
 
-		if(thisX<=0||thisY<=0||thisX>=worldX||thisY>=worldY){
+		if(thisX<=0||thisY<=0||thisX>=worldX-1||thisY>=worldY-1){
 			this.getWorld().removeObject(this);
 		}
 	}
