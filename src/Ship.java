@@ -12,7 +12,7 @@ public class Ship extends Actor{
 	private int countdown = 0;
 	private GreenfootImage ship = new GreenfootImage("Images/SpaceShip.png");
 	public Ship(){
-		
+
 		ship.scale(40, 25);
 		this.setImage(ship);
 		this.setRotation(270);
@@ -75,18 +75,27 @@ public class Ship extends Actor{
 	}
 
 	private void shoot(){
-		if(Greenfoot.isKeyDown("space")&&gunCooldown==0){
-			ShipBullet b = new ShipBullet();
-			this.getWorld().addObject(b, this.getX(), this.getY());
-			GreenfootSound missle = new GreenfootSound("Sounds/Missle.wav");
-			missle.setVolume(50);
-			missle.play();
-			gunCooldown=20;
-		}
-		else{
+		if(Greenfoot.isKeyDown("w")&&gunCooldown==0){
+			makeBullet(270);
+		}else if(Greenfoot.isKeyDown("a")&&gunCooldown==0){
+			makeBullet(180);
+		}else if(Greenfoot.isKeyDown("d")&&gunCooldown==0){
+			makeBullet(0);
+		}else if(Greenfoot.isKeyDown("s")&&gunCooldown==0){
+			makeBullet(90);
+		}else{
 			if(gunCooldown!=0)
 				gunCooldown--;
 		}
 	}
-}
 
+	private void makeBullet(int angle){
+		ShipBullet b = new ShipBullet();
+		b.setRotation(angle);
+		this.getWorld().addObject(b, this.getX(), this.getY());
+		GreenfootSound missle = new GreenfootSound("Sounds/Missle.wav");
+		missle.setVolume(50);
+		missle.play();
+		gunCooldown=20;
+	}
+}
