@@ -15,11 +15,6 @@ public class GameWorld extends World {
 
 	Random ran = new Random();
 
-
-
-
-
-
 	private Button level1 = new Button("Images/LevelOne.png");
 	private Button level2 = new Button("Images/LevelTwo.png");
 	private Button level3 = new Button("Images/LevelThree.png");
@@ -40,7 +35,7 @@ public class GameWorld extends World {
 		getBackground().fill();
 		getBackground().setColor(Color.LIGHT_GRAY);
 
-		for(int i = 0; i< SeaWorld.STARNUMBER; i++){
+		for(int i = 0; i<500; i++){
 			Star star = new Star();
 			int x = ran.nextInt(WIDTH);
 			int y = ran.nextInt(HEIGHT);

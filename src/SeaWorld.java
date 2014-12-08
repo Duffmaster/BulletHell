@@ -107,6 +107,7 @@ public class SeaWorld extends World {
 		if(isMenu){
 			if("enter".equals(Greenfoot.getKey()) ){
 				if(!allLevels || level+1 == nol+1){
+					Score.resetScore();
 					GameWorld.t =1;
 					Life.lives = 3;
 					Greenfoot.setWorld(world);
