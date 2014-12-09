@@ -82,6 +82,7 @@ public class SeaWorld extends World {
 
 		for(int i = 0; i< 500; i++){
 			Star star = new Star();
+			star.setRotation(90);
 			int x = ran.nextInt(WIDTH);
 			int y = ran.nextInt(HEIGHT);
 			this.addObject(star, x, y);
