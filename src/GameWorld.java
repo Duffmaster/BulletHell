@@ -24,7 +24,7 @@ public class GameWorld extends World {
 	private Button boss = new Button("Images/Clear.png");
 	//Yo
 
-	private int currentLevel;
+	public int currentLevel;
 	static int t = 1;
 	GreenfootSound sound = new GreenfootSound("Sounds/Theme.wav");
 

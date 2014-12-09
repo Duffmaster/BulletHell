@@ -1,7 +1,7 @@
 import greenfoot.Actor;
 
 public class ShipBullet extends Actor{
-	
+
 	final static int MOVE_SPEED=6;
 
 	private Bullet b;

@@ -49,7 +49,7 @@ public class SeaWorld extends World {
 	final static Bullet[] testBullets5={testBullet12, testBullet13, testBullet14, testBullet15, testBullet16, testBullet17, testBullet18, testBullet19, testBullet20, testBullet21, testBullet22, testBullet23};
 	final static Bullet[] testBullets6={testBullet15, testBullet16, testBullet17};
 	final static Bullet[] testBullets7={testBullet21, testBullet22, testBullet23};
-	
+
 	static Random ran=new Random();
 
 	private Bullet ghostBullet=new Bullet(1,180,new GreenfootImage(1,1));
@@ -147,9 +147,9 @@ public class SeaWorld extends World {
 	private void makeLevel(int level){
 		switch(level){
 		default:
-			GreenfootImage lvlCompleteBoss = new GreenfootImage("Boss Level Complete! \nTotal Score: " + Score.totalScore() + "\nPress enter to continue!", 50, Color.WHITE, new Color(0,0,0,0));
+			GreenfootImage lvlCompleteBoss = new GreenfootImage("Boss Level Complete! You Win!\nTotal Score: " + Score.totalScore() + "\nPress enter to continue!", 50, Color.WHITE, new Color(0,0,0,0));
 			GreenfootImage lvlComplete = new GreenfootImage("Level "+SeaWorld.level+" Complete! \nScore: " + Score.getScores(SeaWorld.level) + "\nPress enter to continue!", 50, Color.WHITE, new Color(0,0,0,0));
-			if(level < 6){
+			if(world.currentLevel < 6){
 				getBackground().drawImage(lvlComplete, (WIDTH-lvlComplete.getWidth())/2, (HEIGHT-lvlComplete.getHeight())/2);
 			} else {
 				getBackground().drawImage(lvlCompleteBoss, (WIDTH-lvlCompleteBoss.getWidth())/2, (HEIGHT-lvlCompleteBoss.getHeight())/2);
@@ -205,7 +205,7 @@ public class SeaWorld extends World {
 			SeaWorld.level = level;
 			Spawner Spawn12=new Spawner(1,0,20,testBullets6,new GreenfootImage(1,1));
 			Spawner Spawn13=new Spawner(1,180,20,testBullets7,new GreenfootImage(1,1));
-			
+
 			addObject(Spawn12,1,1);
 			addObject(Spawn13,899,725);
 			isMenu=false;

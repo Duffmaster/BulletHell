@@ -46,7 +46,7 @@ public class Bullet extends Actor {
 		this.velocity=velocity;
 		this.angle=angle;
 	}
-	
+
 	public Bullet(Bullet bullet){
 		image=bullet.getImage();
 		setImage(image);
@@ -83,7 +83,7 @@ public class Bullet extends Actor {
 			angle+=rotVelocity;
 		}
 	}
-	
+
 	//do not call if world==null
 	private boolean isAtEdge(){
 		boolean isEdge=false;
@@ -93,24 +93,24 @@ public class Bullet extends Actor {
 		int thisY=getY();
 		int thisWidth=image.getWidth()/2;
 		int thisHeight=image.getHeight()/2;
-		
+
 		if(thisX<=0||thisY<=0||thisX+thisWidth>=worldX||thisY+thisHeight>=worldY){
 			isEdge=true;
 		}
-		
+
 		return isEdge;
 	}
-	
+
 	private boolean isTouching(){
 		boolean isTouching=false;
-		
+
 		if(this.getOneObjectAtOffset(0, 0, Ship.class)!=null){
 			isTouching=true;
 		}
-		
+
 		return isTouching;
 	}
-	
+
 	public void addAngle(int angle){
 		this.angle+=angle;
 	}

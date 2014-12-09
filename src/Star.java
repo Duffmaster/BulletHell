@@ -22,12 +22,12 @@ public class Star extends Actor{
 		else{
 			this.move(1);
 		}
-		
+
 		this.atEdge();
 	}
-	
-	
-	
+
+
+
 	public void atEdge(){
 		if(this.getX() > GameWorld.WIDTH - (this.getImage().getWidth() + 3)){
 			this.setLocation(0, y);

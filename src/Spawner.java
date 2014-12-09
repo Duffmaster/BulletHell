@@ -43,7 +43,7 @@ public class Spawner extends Actor {
 		bulletsFired=new Bullet[numBullets*baseBullet.length];
 		spawnDelay=baseDelay/numBullets;
 	}
-	
+
 	public Spawner(int velocity, int angle, int bulletRotation,int numBullets, Bullet[] baseBullet, GreenfootImage image) {
 		this.image=image;
 		setImage(image);
